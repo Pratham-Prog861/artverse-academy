@@ -1,5 +1,5 @@
 "use client";
-import courseData from "@/data/art_courses";
+import courseData from "@/data/art_courses.json";
 import { BackgroundGradient } from "./ui/background-gradient";
 import { Link } from "lucide-react";
 
