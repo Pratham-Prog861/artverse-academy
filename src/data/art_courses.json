@@ -1,0 +1,104 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "title": "Classical Sketching",
+      "slug": "classical-sketching",
+      "description": "Master line work, shading, perspective, and figure drawing using time-tested classical techniques.",
+      "price": 99.99,
+      "instructor": "Priya Sharma",
+      "isFeatured": true,
+      "image": "https://images.unsplash.com/photo-1511854005000-f27912f66ade?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 2,
+      "title": "Digital Illustration",
+      "slug": "digital-illustration",
+      "description": "Create stunning digital artwork using Procreate, Photoshop and Illustrator with professional workflows.",
+      "price": 119.99,
+      "instructor": "Priya Sharma",
+      "isFeatured": true,
+      "image": "https://images.unsplash.com/photo-1562048048-86d659689440?q=80&w=715&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 3,
+      "title": "UI/UX Design",
+      "slug": "ui-ux-design",
+      "description": "Design beautiful, functional interfaces in Figma and learn the principles of human-centered design.",
+      "price": 129.99,
+      "instructor": "Arjun Mehta",
+      "isFeatured": true,
+      "image": "https://plus.unsplash.com/premium_photo-1661326248013-3107a4b2bd91?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 4,
+      "title": "Art Photography",
+      "slug": "art-photography",
+      "description": "Explore composition, lighting, and post-processing to create photographs that feel like paintings.",
+      "price": 109.99,
+      "instructor": "Nisha Verma",
+      "isFeatured": false,
+      "image": "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 5,
+      "title": "3D Sculpting",
+      "slug": "3d-sculpting",
+      "description": "Sculpt organic and hard-surface 3D models in ZBrush for games, film, and collectibles.",
+      "price": 149.99,
+      "instructor": "Rohan Das",
+      "isFeatured": true,
+      "image": "https://images.unsplash.com/photo-1684770114368-6e01b4f8741a?q=80&w=1334&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 6,
+      "title": "Motion & Animation",
+      "slug": "motion-animation",
+      "description": "Bring designs to life with After Effects, Lottie, and frame-by-frame animation techniques.",
+      "price": 139.99,
+      "instructor": "Rohan Das",
+      "isFeatured": false,
+      "image": "https://images.unsplash.com/photo-1707234377604-d5f75c84bb9a?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 7,
+      "title": "Color Theory & Painting",
+      "slug": "color-theory-painting",
+      "description": "Understand the science and art of color to bring vibrancy and emotion to any medium.",
+      "price": 89.99,
+      "instructor": "Priya Sharma",
+      "isFeatured": false,
+      "image": "https://images.unsplash.com/photo-1716471330475-f0669db8947a?q=80&w=1253&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 8,
+      "title": "Typography & Layout",
+      "slug": "typography-layout",
+      "description": "Learn how to use type as a design tool — from pairing fonts to creating editorial layouts.",
+      "price": 99.99,
+      "instructor": "Arjun Mehta",
+      "isFeatured": false,
+      "image": "https://images.unsplash.com/photo-1581080247575-12fa86f6ef6e?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 9,
+      "title": "Brand Identity Design",
+      "slug": "brand-identity-design",
+      "description": "Build complete visual identities — logos, color systems, and brand guidelines from scratch.",
+      "price": 159.99,
+      "instructor": "Arjun Mehta",
+      "isFeatured": true,
+      "image": "https://images.unsplash.com/photo-1690228254548-31ef53e40cd1?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 10,
+      "title": "Portrait & Figure Drawing",
+      "slug": "portrait-figure-drawing",
+      "description": "Study human anatomy, proportions, and expression to draw lifelike portraits and figures.",
+      "price": 119.99,
+      "instructor": "Nisha Verma",
+      "isFeatured": false,
+      "image": "https://images.unsplash.com/photo-1758521232750-909a8b065963?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    }
+  ]
+}
