@@ -1,7 +1,8 @@
 "use client";
+
 import courseData from "@/data/art_courses.json";
 import { BackgroundGradient } from "./ui/background-gradient";
-import { Link } from "lucide-react";
+import Link from "next/link";
 
 interface Course {
   id: number;
@@ -13,42 +14,45 @@ interface Course {
   isFeatured: boolean;
 }
 
+const tones = ["amber", "violet", "emerald"] as const;
+
 const FeaturedCourses = () => {
-  const featuredCourses = courseData.courses.filter(
-    (course: Course) => course.isFeatured,
-  );
+  const featuredCourses = courseData.courses.filter((course: Course) => course.isFeatured);
+
   return (
-    <div className="py-12 bg-gray-900">
-      <div>
+    <section className="bg-black/85 py-16">
+      <div className="mx-auto max-w-7xl px-6">
         <div className="text-center">
-          <h2 className="text-base text-teal-600 font-semibold tracking-wide uppercase">
-            FEATURED COURSES
-          </h2>
-          <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
-            Learn With the Best
-          </p>
+          <h2 className="text-xs font-semibold tracking-[0.32em] text-amber-100/80">FEATURED COURSES</h2>
+          <p className="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">Premium pathways for modern artists</p>
         </div>
-      </div>
-      <div className="mt-10 mx-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
-          {featuredCourses.map((course: Course) => (
+
+        <div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {featuredCourses.map((course: Course, index) => (
             <div key={course.id} className="flex justify-center">
-              <BackgroundGradient className="flex flex-col rounded-[22px] bg-white dark:bg-zinc-900 overflow-hidden h-full max-w-sm">
-                <div className="p-4 sm:p-6 flex flex-col items-center text-center grow">
-                  <p className="text-lg sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200">
-                    {course.title}
-                  </p>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400 grow">
-                    {course.description}
-                  </p>
-                  <Link href={`/courses/${course.slug}`}>Learn More</Link>
+              <BackgroundGradient
+                animate={false}
+                tone={tones[index % tones.length]}
+                containerClassName="w-full"
+                className="h-full rounded-[22px] bg-zinc-950 p-0"
+              >
+                <div className="flex h-full flex-col p-6 text-left">
+                  <p className="text-xs uppercase tracking-[0.18em] text-amber-100/75">{course.instructor}</p>
+                  <p className="mt-2 text-2xl font-semibold text-white">{course.title}</p>
+                  <p className="mt-3 grow text-sm leading-7 text-neutral-300">{course.description}</p>
+                  <div className="mt-5 flex items-center justify-between">
+                    <span className="text-sm font-semibold text-white">${course.price}</span>
+                    <Link href="/courses" className="text-sm text-amber-200 transition hover:text-amber-100">
+                      View Course
+                    </Link>
+                  </div>
                 </div>
               </BackgroundGradient>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

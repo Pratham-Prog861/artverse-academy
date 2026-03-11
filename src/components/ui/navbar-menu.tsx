@@ -1,12 +1,13 @@
 "use client";
 import React from "react";
 import { motion } from "motion/react";
+import { cn } from "@/lib/utils";
 
 const transition = {
   type: "spring" as const,
-  mass: 0.5,
-  damping: 11.5,
-  stiffness: 100,
+  mass: 0.45,
+  damping: 14,
+  stiffness: 120,
   restDelta: 0.001,
   restSpeed: 0.001,
 };
@@ -23,30 +24,31 @@ export const MenuItem = ({
   children?: React.ReactNode;
 }) => {
   return (
-    <div onMouseEnter={() => setActive(item)} className="relative ">
+    <div onMouseEnter={() => setActive(item)} className="relative">
       <motion.p
-        transition={{ duration: 0.3 }}
-        className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
+        transition={{ duration: 0.25 }}
+        className={cn(
+          "cursor-pointer px-1 text-sm tracking-[0.14em] uppercase transition",
+          active === item ? "text-amber-100" : "text-white/80 hover:text-white",
+        )}
       >
         {item}
       </motion.p>
+
       {active !== null && (
         <motion.div
-          initial={{ opacity: 0, scale: 0.85, y: 10 }}
+          initial={{ opacity: 0, scale: 0.9, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={transition}
         >
           {active === item && children && (
-            <div className="absolute top-[calc(100%_+_1.2rem)] left-1/2 transform -translate-x-1/2 pt-4">
+            <div className="absolute left-1/2 top-[calc(100%_+_1rem)] -translate-x-1/2 pt-2">
               <motion.div
                 transition={transition}
-                layoutId="active" // layoutId ensures smooth animation
-                className="bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
+                layoutId="active"
+                className="overflow-hidden rounded-2xl border border-white/15 bg-black/90 shadow-[0_20px_70px_rgba(0,0,0,0.55)] backdrop-blur-2xl"
               >
-                <motion.div
-                  layout // layout ensures smooth animation
-                  className="w-max h-full p-4"
-                >
+                <motion.div layout className="h-full w-max p-4">
                   {children}
                 </motion.div>
               </motion.div>
@@ -67,9 +69,10 @@ export const Menu = ({
 }) => {
   return (
     <nav
-      onMouseLeave={() => setActive(null)} // resets the state
-      className="relative rounded-full border border-transparent dark:bg-black dark:border-white/[0.2] bg-white shadow-input flex justify-center space-x-4 px-8 py-6 "
+      onMouseLeave={() => setActive(null)}
+      className="relative flex items-center justify-center space-x-6 rounded-full border border-white/15 bg-black/60 px-8 py-4 shadow-[0_15px_45px_rgba(0,0,0,0.45)] backdrop-blur-2xl"
     >
+      <div className="pointer-events-none absolute inset-x-16 -top-px h-px bg-gradient-to-r from-transparent via-amber-200/60 to-transparent" />
       {children}
     </nav>
   );
@@ -87,21 +90,17 @@ export const ProductItem = ({
   src: string;
 }) => {
   return (
-    <a href={href} className="flex space-x-2">
+    <a href={href} className="group flex space-x-3 rounded-xl p-2 transition hover:bg-white/5">
       <img
         src={src}
         width={140}
         height={70}
         alt={title}
-        className="shrink-0 rounded-md shadow-2xl"
+        className="shrink-0 rounded-md border border-white/10 object-cover shadow-2xl"
       />
       <div>
-        <h4 className="text-xl font-bold mb-1 text-black dark:text-white">
-          {title}
-        </h4>
-        <p className="text-neutral-700 text-sm max-w-[10rem] dark:text-neutral-300">
-          {description}
-        </p>
+        <h4 className="mb-1 text-base font-semibold text-white transition group-hover:text-amber-100">{title}</h4>
+        <p className="max-w-[14rem] text-sm text-neutral-300">{description}</p>
       </div>
     </a>
   );
@@ -109,10 +108,7 @@ export const ProductItem = ({
 
 export const HoveredLink = ({ children, ...rest }: any) => {
   return (
-    <a
-      {...rest}
-      className="text-neutral-700 dark:text-neutral-200 hover:text-black "
-    >
+    <a {...rest} className="text-sm text-white/75 transition hover:text-amber-100">
       {children}
     </a>
   );

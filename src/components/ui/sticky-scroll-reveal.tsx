@@ -1,7 +1,7 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import { useMotionValueEvent, useScroll } from "motion/react";
-import { motion } from "motion/react";
+
+import React, { useRef, useState } from "react";
+import { useMotionValueEvent, useScroll, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 export const StickyScroll = ({
@@ -15,111 +15,84 @@ export const StickyScroll = ({
   }[];
   contentClassName?: string;
 }) => {
-  const [activeCard, setActiveCard] = React.useState(0);
-  const ref = useRef<any>(null);
+  const [activeCard, setActiveCard] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+
   const { scrollYProgress } = useScroll({
-    // uncomment line 22 and comment line 23 if you DONT want the overflow container and want to have it change on the entire page scroll
-    // target: ref
     container: ref,
     offset: ["start start", "end start"],
   });
-  const cardLength = content.length;
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const cardsBreakpoints = content.map((_, index) => index / cardLength);
-    const closestBreakpointIndex = cardsBreakpoints.reduce(
-      (acc, breakpoint, index) => {
-        const distance = Math.abs(latest - breakpoint);
-        if (distance < Math.abs(latest - cardsBreakpoints[acc])) {
-          return index;
-        }
-        return acc;
-      },
-      0,
+    const nextIndex = Math.min(
+      content.length - 1,
+      Math.max(0, Math.round(latest * (content.length - 1))),
     );
-    setActiveCard(closestBreakpointIndex);
+
+    if (nextIndex !== activeCard) {
+      setActiveCard(nextIndex);
+    }
   });
 
-  const backgroundColors = [
-    "#0f172a", // slate-900
-    "#000000", // black
-    "#171717", // neutral-900
+  const surfaceClasses = ["bg-black", "bg-zinc-950", "bg-zinc-900"];
+  const frameGradients = [
+    "linear-gradient(to bottom right, #f59e0b, #78350f)",
+    "linear-gradient(to bottom right, #fef3c7, #f59e0b)",
+    "linear-gradient(to bottom right, #f59e0b, #7c3aed)",
   ];
-  const linearGradients = [
-    "linear-gradient(to bottom right, #06b6d4, #10b981)", // cyan-500 to emerald-500
-    "linear-gradient(to bottom right, #ec4899, #6366f1)", // pink-500 to indigo-500
-    "linear-gradient(to bottom right, #f97316, #eab308)", // orange-500 to yellow-500
-  ];
-
-  const [backgroundGradient, setBackgroundGradient] = useState(
-    linearGradients[0],
-  );
-
-  useEffect(() => {
-    setBackgroundGradient(linearGradients[activeCard % linearGradients.length]);
-  }, [activeCard]);
 
   return (
-    <motion.div
-      animate={{
-        backgroundColor: backgroundColors[activeCard % backgroundColors.length],
-      }}
-      className="relative flex h-[30rem] justify-center space-x-10 overflow-y-auto rounded-md p-10 hide-scrollbar"
+    <div
       ref={ref}
+      className={cn(
+        "relative flex h-[34rem] justify-center space-x-10 overflow-y-auto rounded-3xl border border-white/12 p-8 hide-scrollbar transition-colors duration-300",
+        surfaceClasses[activeCard % surfaceClasses.length],
+      )}
     >
-      <div className="div relative flex items-start px-4">
+      <div className="relative flex items-start px-2">
         <div className="max-w-2xl">
-          {content.map((item, index) => (
-            <div key={item.title + index} className="my-20">
-              <motion.h2
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                }}
-                className="text-2xl font-bold text-slate-100"
-              >
-                {item.title}
-              </motion.h2>
-              <motion.p
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                }}
-                className="text-kg mt-10 max-w-sm text-slate-300"
-              >
-                {item.description}
-              </motion.p>
-            </div>
-          ))}
-          <div className="h-40" />
+          {content.map((item, index) => {
+            const active = activeCard === index;
+
+            return (
+              <div key={`${item.title}-${index}`} className="my-16">
+                <h2 className={cn("text-3xl font-semibold transition-opacity duration-300", active ? "opacity-100 text-slate-100" : "opacity-35 text-slate-200")}>
+                  {item.title}
+                </h2>
+                <p className={cn("mt-6 max-w-lg text-sm leading-8 transition-opacity duration-300", active ? "opacity-100 text-slate-300" : "opacity-35 text-slate-400")}>
+                  {item.description}
+                </p>
+              </div>
+            );
+          })}
+          <div className="h-32" />
         </div>
       </div>
+
       <div
         className={cn(
-          "sticky top-10 hidden h-[400px] w-[450px] overflow-hidden rounded-md bg-white lg:block",
+          "sticky top-10 hidden h-[420px] w-[460px] overflow-hidden rounded-2xl border border-white/15 lg:block",
           contentClassName,
         )}
       >
+        <div className="absolute inset-0 opacity-30" style={{ background: frameGradients[activeCard % frameGradients.length] }} />
         <motion.div
           key={activeCard}
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.4 }}
-          className="h-full w-full"
+          transition={{ duration: 0.28 }}
+          className="relative h-full w-full"
         >
-          {content[activeCard].image && (
+          {content[activeCard]?.image ? (
             <img
               src={content[activeCard].image}
               alt={content[activeCard].title}
               className="h-full w-full object-cover"
+              loading="lazy"
             />
-          )}
+          ) : null}
         </motion.div>
       </div>
-    </motion.div>
+    </div>
   );
 };

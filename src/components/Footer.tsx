@@ -1,94 +1,55 @@
+import Link from "next/link";
+
 const Footer = () => {
   return (
-    <footer className="bg-black text-gray-400 py-12">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4 sm:px-6 lg:px-8">
+    <footer className="border-t border-white/10 bg-black py-12 text-gray-400">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
         <div>
-          <h2 className="text-white text-lg font-semibold mb-4">About Us</h2>
-          <p className="mb-4">
-            ArtVerse Academy nurtures creative talent through world-class
-            instruction, building a vibrant community of artists and visual
-            storytellers.
+          <h2 className="mb-4 text-lg font-semibold text-white">About Us</h2>
+          <p className="mb-4 text-sm leading-7 text-neutral-300">
+            ArtVerse Academy nurtures creative talent through world-class instruction and a high-touch mentorship ecosystem.
           </p>
         </div>
+
         <div>
-          <h2 className="text-white text-lg font-semibold mb-4">Quick Links</h2>
-          <ul>
+          <h2 className="mb-4 text-lg font-semibold text-white">Quick Links</h2>
+          <ul className="space-y-2 text-sm">
             <li>
-              <a
-                href="#"
-                className="hover:text-white transition-colors duration-300"
-              >
+              <Link href="/" className="transition-colors duration-300 hover:text-white">
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#courses"
-                className="hover:text-white transition-colors duration-300"
-              >
+              <Link href="/courses" className="transition-colors duration-300 hover:text-white">
                 Courses
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#instructors"
-                className="hover:text-white transition-colors duration-300"
-              >
-                Instructors
-              </a>
-            </li>
-            <li>
-              <a
-                href="#testimonials"
-                className="hover:text-white transition-colors duration-300"
-              >
-                Testimonials
-              </a>
-            </li>
-            <li>
-              <a
-                href="#contact"
-                className="hover:text-white transition-colors duration-300"
-              >
+              <Link href="/contact" className="transition-colors duration-300 hover:text-white">
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
+
         <div>
-          <h2 className="text-white text-lg font-semibold mb-4">Follow Us</h2>
-          <div className="flex space-x-4">
-            <a
-              href="#"
-              className="hover:text-white transition-colors duration-300"
-            >
-              Instagram
-            </a>
-            <a
-              href="#"
-              className="hover:text-white transition-colors duration-300"
-            >
-              YouTube
-            </a>
-            <a
-              href="#"
-              className="hover:text-white transition-colors duration-300"
-            >
-              LinkedIn
-            </a>
+          <h2 className="mb-4 text-lg font-semibold text-white">Follow Us</h2>
+          <div className="flex flex-col space-y-2 text-sm">
+            <a href="#" className="transition-colors duration-300 hover:text-white">Instagram</a>
+            <a href="#" className="transition-colors duration-300 hover:text-white">YouTube</a>
+            <a href="#" className="transition-colors duration-300 hover:text-white">LinkedIn</a>
           </div>
         </div>
+
         <div>
-          <h2 className="text-white text-lg font-semibold mb-4">Contact Us</h2>
-          <p>Bandra West, Mumbai</p>
-          <p>Maharashtra 400050</p>
-          <p>Email: hello@artverse.in</p>
-          <p>Phone: +91 98765 43210</p>
+          <h2 className="mb-4 text-lg font-semibold text-white">Contact Us</h2>
+          <p className="text-sm">Bandra West, Mumbai</p>
+          <p className="text-sm">Maharashtra 400050</p>
+          <p className="text-sm">Email: hello@artverse.in</p>
+          <p className="text-sm">Phone: +91 98765 43210</p>
         </div>
       </div>
-      <p className="text-center text-xs pt-8">
-        © 2025 ArtVerse Academy. All rights reserved.
-      </p>
+      <p className="pt-8 text-center text-xs">Copyright 2026 ArtVerse Academy. All rights reserved.</p>
     </footer>
   );
 };

@@ -1,40 +1,33 @@
 "use client";
 import React, { useState } from "react";
-import { HoveredLink, Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
+import { HoveredLink, Menu, MenuItem } from "./ui/navbar-menu";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 const Navbar = ({ className }: { className?: string }) => {
   const [active, setActive] = useState<string | null>(null);
+
   return (
-    <div
-      className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-50", className)}
-    >
+    <div className={cn("fixed inset-x-0 top-8 z-50 mx-auto w-fit", className)}>
       <Menu setActive={setActive}>
-        <Link href={"/"}>
-          <MenuItem
-            setActive={setActive}
-            active={active}
-            item="Home"
-          ></MenuItem>
+        <Link href="/">
+          <MenuItem setActive={setActive} active={active} item="Home" />
         </Link>
-        <MenuItem setActive={setActive} active={active} item="Our Courses">
-          <div className="flex flex-col space-y-4 text-sm">
+
+        <MenuItem setActive={setActive} active={active} item="Courses">
+          <div className="flex min-w-[16rem] flex-col space-y-3 text-sm">
             <HoveredLink href="/courses">All Courses</HoveredLink>
             <HoveredLink href="/courses">Classical Sketching</HoveredLink>
             <HoveredLink href="/courses">Digital Illustration</HoveredLink>
-            <HoveredLink href="/courses">UI/UX Design</HoveredLink>
+            <HoveredLink href="/courses">UI UX Design</HoveredLink>
             <HoveredLink href="/courses">Art Photography</HoveredLink>
             <HoveredLink href="/courses">3D Sculpting</HoveredLink>
-            <HoveredLink href="/courses">Motion & Animation</HoveredLink>
+            <HoveredLink href="/courses">Motion and Animation</HoveredLink>
           </div>
         </MenuItem>
-        <Link href={"/contact"}>
-          <MenuItem
-            setActive={setActive}
-            active={active}
-            item="Contact Us"
-          ></MenuItem>
+
+        <Link href="/contact">
+          <MenuItem setActive={setActive} active={active} item="Contact" />
         </Link>
       </Menu>
     </div>

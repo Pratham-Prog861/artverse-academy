@@ -1,24 +1,20 @@
 "use client";
+
 import { WavyBackground } from "./ui/wavy-background";
 import { AnimatedTooltip } from "./ui/animated-tooltip";
 import instructors from "@/data/instructors";
 
 const Instructors = () => {
   return (
-    <div className="relative h-[40rem] overflow-hidden flex items-center justify-center">
-      <WavyBackground className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center h-full">
-        <h2 className="text-2xl md:text-4xl lg:text-7xl text-white font-bold text-center mb-8">
-          Meet Our Instructors
-        </h2>
-        <p className="text-base md:text-lg text-white text-center mb-4">
-          Discover the talented professionals who will guide your musical
-          journey
-        </p>
-        <div className="flex flex-row items-center justify-center mb-10 w-full">
+    <section className="relative flex h-[42rem] items-center justify-center overflow-hidden">
+      <WavyBackground className="mx-auto flex h-full w-full max-w-7xl flex-col items-center justify-center" containerClassName="h-[42rem] w-full">
+        <h2 className="text-center text-3xl font-bold text-white md:text-5xl lg:text-6xl">Meet our expert mentors</h2>
+        <p className="mb-6 mt-4 text-center text-base text-white/80 md:text-lg">Industry-led faculty shaping your creative breakthroughs</p>
+        <div className="mb-10 flex w-full flex-row items-center justify-center">
           <AnimatedTooltip items={instructors} />
         </div>
       </WavyBackground>
-    </div>
+    </section>
   );
 };
 

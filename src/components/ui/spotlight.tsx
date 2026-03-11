@@ -14,13 +14,12 @@ export const Spotlight = ({
 }: SpotlightProps) => {
   const id = useId();
   const filterId = `filter-${id.replace(/:/g, "")}`;
+
   return (
     <svg
       className={cn(
-        "animate-spotlight pointer-events-none absolute z-[1]  h-[169%] w-[138%] lg:w-[84%] opacity-0",
-        direction === "left"
-          ? "animate-spotlight-left"
-          : "animate-spotlight-right",
+        "pointer-events-none absolute z-[1] h-[169%] w-[138%] animate-spotlight opacity-0 lg:w-[84%]",
+        direction === "left" ? "animate-spotlight-left" : "animate-spotlight-right",
         className,
       )}
       xmlns="http://www.w3.org/2000/svg"
@@ -38,9 +37,9 @@ export const Spotlight = ({
               ? "matrix(0.822377 -0.568943 0.568943 0.822377 155.88 2291.09)"
               : "matrix(-0.822377 -0.568943 -0.568943 0.822377 3631.88 2291.09)"
           }
-          fill={fill || "white"}
-          fillOpacity="0.21"
-        ></ellipse>
+          fill={fill || "#fef3c7"}
+          fillOpacity="0.34"
+        />
       </g>
       <defs>
         <filter
@@ -52,17 +51,9 @@ export const Spotlight = ({
           filterUnits="userSpaceOnUse"
           colorInterpolationFilters="sRGB"
         >
-          <feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood>
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="BackgroundImageFix"
-            result="shape"
-          ></feBlend>
-          <feGaussianBlur
-            stdDeviation="151"
-            result="effect1_foregroundBlur_1065_8"
-          ></feGaussianBlur>
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+          <feGaussianBlur stdDeviation="151" result="effect1_foregroundBlur_1065_8" />
         </filter>
       </defs>
     </svg>
