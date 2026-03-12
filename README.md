@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ArtVerse Academy
+
+Premium, motion-rich creative academy website built with **Next.js 16**, **React 19**, **Tailwind CSS v4**, and **Aceternity-style UI components**.
+
+## Overview
+
+This project is a multi-page marketing website for ArtVerse Academy with three main routes:
+
+- `/` - Home (hero, featured courses, sticky reveal, testimonials, webinars, instructors)
+- `/courses` - Full course catalog with interactive 3D cards
+- `/contact` - Contact form with animated background beams
+
+The design system is powered by reusable components in `src/components/ui` (Aceternity-inspired patterns), and page sections are composed from `src/components`.
+
+## Tech Stack
+
+- Next.js `16.1.6` (App Router)
+- React `19.2.3`
+- TypeScript
+- Tailwind CSS v4
+- Motion (`motion` package)
+- Biome (lint + format)
+- simplex-noise (wavy canvas effects)
+
+## Project Structure
+
+```bash
+src/
+  app/
+    layout.tsx
+    page.tsx
+    courses/page.tsx
+    contact/page.tsx
+    globals.css
+  components/
+    Hero.tsx
+    FeaturedCourses.tsx
+    WhyChooseUs.tsx
+    Testimonials.tsx
+    UpcomingWebinars.tsx
+    Instructors.tsx
+    Navbar.tsx
+    Footer.tsx
+    ui/
+      3d-card.tsx
+      animated-tooltip.tsx
+      background-beams.tsx
+      background-gradient.tsx
+      card-hover-effect.tsx
+      infinite-moving-cards.tsx
+      moving-border.tsx
+      navbar-menu.tsx
+      spotlight.tsx
+      sticky-scroll-reveal.tsx
+      wavy-background.tsx
+  data/
+    art_courses.json
+    testimonials.ts
+    webinars.ts
+    instructors.ts
+    artVerseContent.ts
+```
 
 ## Getting Started
 
-First, run the development server:
+### 1. Install dependencies
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+If you use npm:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 2. Run development server
 
-## Learn More
+```bash
+pnpm dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open [http://localhost:3000](http://localhost:3000).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Available Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+pnpm dev      # start dev server
+pnpm build    # production build
+pnpm start    # start production server
+pnpm lint     # biome check
+pnpm format   # biome format --write
+```
 
-## Deploy on Vercel
+## Design Notes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Global dark theme is enabled in `src/app/layout.tsx`.
+- Color variables are defined in `src/app/globals.css` and mapped via Tailwind theme tokens.
+- Aceternity-style UI primitives live in `src/components/ui` and are reused across all pages.
+- Motion effects are intentionally concentrated in key sections (hero, sticky reveal, testimonial marquee, card interactions).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Data-Driven Content
+
+Main content is loaded from files in `src/data`:
+
+- Courses: `art_courses.json`
+- Testimonials: `testimonials.ts`
+- Webinars: `webinars.ts`
+- Instructors: `instructors.ts`
+- Sticky reveal content: `artVerseContent.ts`
+
+Update these files to change page content without rewriting UI.
